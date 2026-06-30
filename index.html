@@ -47,9 +47,70 @@
         .header .logo-img {
             width: 170px;
             height: 170px;
-            border-radius: 24%;
+            border-radius: 50%;
             box-shadow: 0 0 30px rgba(74, 158, 255, 0.4);
             flex-shrink: 0;
+        }
+
+        /* ----- LOGO ANIMADA SVG ----- */
+        .logo-anim {
+            width: 170px;
+            height: 170px;
+            flex-shrink: 0;
+        }
+
+        .logo-anim .orbit-group {
+            transform-origin: 200px 200px;
+            animation: cdfSpin 22s linear infinite;
+        }
+        @keyframes cdfSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .logo-anim .node {
+            animation: cdfPulse 2.4s ease-in-out infinite;
+        }
+        .logo-anim .node circle { transform-origin: center; }
+        @keyframes cdfPulse {
+            0%, 100% { opacity: 0.55; }
+            50% { opacity: 1; }
+        }
+        .logo-anim .n1 { animation-delay: 0s; }
+        .logo-anim .n2 { animation-delay: 0.4s; }
+        .logo-anim .n3 { animation-delay: 0.8s; }
+        .logo-anim .n4 { animation-delay: 1.2s; }
+        .logo-anim .n5 { animation-delay: 1.6s; }
+        .logo-anim .n6 { animation-delay: 2.0s; }
+
+        .logo-anim .spoke {
+            stroke-dasharray: 6 5;
+            animation: cdfFlow 1.4s linear infinite;
+        }
+        @keyframes cdfFlow {
+            to { stroke-dashoffset: -22; }
+        }
+
+        .logo-anim .ring {
+            fill: none;
+            stroke: #d4af37;
+            stroke-width: 1;
+            opacity: 0.35;
+        }
+
+        .logo-anim .hub-circle {
+            animation: cdfHubGlow 2.4s ease-in-out infinite;
+            transform-origin: 200px 200px;
+        }
+        @keyframes cdfHubGlow {
+            0%, 100% { filter: drop-shadow(0 0 0px rgba(212,175,55,0)); }
+            50% { filter: drop-shadow(0 0 6px rgba(212,175,55,0.55)); }
+        }
+
+        .logo-anim .wordmark {
+            font-family: Arial, sans-serif;
+            font-weight: 700;
+            fill: #ffffff;
         }
 
         .header .titulo-bloco {
@@ -433,7 +494,35 @@
 
         <!-- HEADER -->
         <div class="header">
-            <img src="https://drive.google.com/thumbnail?id=1grLQonL25DWGHfjY71k-D_MaJ99WCsUa&sz=w1000" alt="Logo CDF" class="logo-img" />
+            <svg class="logo-anim" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="hubGrad" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#1d5fa0"/>
+                        <stop offset="100%" stop-color="#0c2d52"/>
+                    </radialGradient>
+                </defs>
+
+                <circle class="ring" cx="200" cy="200" r="150"/>
+
+                <g class="orbit-group">
+                    <line class="spoke" x1="200" y1="200" x2="200" y2="60"  stroke="#d4af37" stroke-width="2"/>
+                    <line class="spoke" x1="200" y1="200" x2="321" y2="130" stroke="#d4af37" stroke-width="2"/>
+                    <line class="spoke" x1="200" y1="200" x2="321" y2="270" stroke="#d4af37" stroke-width="2"/>
+                    <line class="spoke" x1="200" y1="200" x2="200" y2="340" stroke="#d4af37" stroke-width="2"/>
+                    <line class="spoke" x1="200" y1="200" x2="79"  y2="270" stroke="#d4af37" stroke-width="2"/>
+                    <line class="spoke" x1="200" y1="200" x2="79"  y2="130" stroke="#d4af37" stroke-width="2"/>
+
+                    <g class="node n1"><circle cx="200" cy="60"  r="10" fill="#1d5fa0" stroke="#d4af37" stroke-width="1.5"/></g>
+                    <g class="node n2"><circle cx="321" cy="130" r="10" fill="#1d5fa0" stroke="#d4af37" stroke-width="1.5"/></g>
+                    <g class="node n3"><circle cx="321" cy="270" r="10" fill="#1d5fa0" stroke="#d4af37" stroke-width="1.5"/></g>
+                    <g class="node n4"><circle cx="200" cy="340" r="10" fill="#1d5fa0" stroke="#d4af37" stroke-width="1.5"/></g>
+                    <g class="node n5"><circle cx="79"  cy="270" r="10" fill="#1d5fa0" stroke="#d4af37" stroke-width="1.5"/></g>
+                    <g class="node n6"><circle cx="79"  cy="130" r="10" fill="#1d5fa0" stroke="#d4af37" stroke-width="1.5"/></g>
+                </g>
+
+                <circle class="hub-circle" cx="200" cy="200" r="62" fill="url(#hubGrad)" stroke="#d4af37" stroke-width="2"/>
+                <text class="wordmark" x="200" y="216" font-size="42" text-anchor="middle">CDF</text>
+            </svg>
             <div class="titulo-bloco">
                 <h1>CDF Automação <span>Educacional</span></h1>
                 <div class="sub">Plataforma de Gestão do Conhecimento</div>
