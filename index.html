@@ -6,7 +6,6 @@
     <title>CDF Automação - Central Educacional</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-        /* ----- RESET & BASE ----- */
         * {
             margin: 0;
             padding: 0;
@@ -35,13 +34,42 @@
             border: 1px solid rgba(70, 150, 255, 0.15);
         }
 
-        /* ----- HEADER ----- */
         .header {
             display: flex;
-            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            gap: 1.6rem;
             margin-bottom: 3rem;
-            text-align: center;
+            text-align: left;
+            position: relative;
+        }
+
+        .header .logo-img {
+            width: 170px;
+            height: 170px;
+            border-radius: 24%;
+            box-shadow: 0 0 30px rgba(74, 158, 255, 0.4);
+            flex-shrink: 0;
+        }
+
+        .header .titulo-bloco {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header .titulo-bloco {
+                align-items: center;
+            }
+            .header .logo-img {
+                width: 110px;
+                height: 110px;
+            }
         }
 
         .header .logo-icon {
@@ -85,6 +113,122 @@
             margin-top: 0.8rem;
         }
 
+        /* ----- CARD DE DESTAQUE (TOPO) - RETÂNGULO COM ACESSOS RÁPIDOS ----- */
+        .destaque-wrapper {
+            margin-bottom: 2.2rem;
+            width: 100%;
+            border-radius: 2rem;
+            padding: 1.6rem 1.8rem;
+            background: linear-gradient(120deg, #14335c, #1f4d80 55%, #1a3a6a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255,255,255,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .destaque-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 2rem;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent 60%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .destaque-titulo-geral {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #cfe3ff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.1rem;
+            opacity: 0.85;
+        }
+
+        .destaque-titulo-geral i {
+            color: #ffd866;
+        }
+
+        .destaque-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .btn-destaque {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            padding: 1rem 1.1rem;
+            border-radius: 1.4rem;
+            text-decoration: none;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .btn-destaque i {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.25));
+        }
+
+        .btn-destaque .destaque-label {
+            line-height: 1.25;
+        }
+
+        .btn-destaque:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 14px 26px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .destaque-bb {
+            background: linear-gradient(135deg, #f4d100, #c9a600);
+            color: #1a1a00;
+        }
+        .destaque-bb i { color: #1a1a00; }
+
+        .destaque-sei {
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+        }
+        .destaque-sei i { color: #a5ffb0; }
+
+        .destaque-contedu {
+            background: linear-gradient(135deg, #8e24aa, #5e1487);
+        }
+        .destaque-contedu i { color: #f0c8ff; }
+
+        .destaque-escolar {
+            background: linear-gradient(135deg, #1e88e5, #0d47a1);
+        }
+        .destaque-escolar i { color: #c8e6ff; }
+
+        @media (max-width: 768px) {
+            .destaque-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 420px) {
+            .destaque-grid {
+                grid-template-columns: 1fr;
+            }
+            .destaque-wrapper {
+                padding: 1.2rem 1rem;
+            }
+        }
+
         /* ----- GRID DOS BOTÕES ----- */
         .grid-botoes {
             display: grid;
@@ -93,7 +237,6 @@
             margin-top: 0.5rem;
         }
 
-        /* ---- CARD BOTÃO ---- */
         .btn-card {
             display: flex;
             flex-direction: column;
@@ -165,162 +308,68 @@
             transform: scale(0.95) translateY(0px);
         }
 
-        /* ============================================= */
-        /* 20 GRADIENTES PERSONALIZADOS                 */
-        /* ============================================= */
-
         /* ---- AZUIS ---- */
-        .btn-azul-preto {
-            background: linear-gradient(145deg, #0b2b4a, #0b1a2e);
-            color: #d0e6ff;
-        }
+        .btn-azul-preto { background: linear-gradient(145deg, #0b2b4a, #0b1a2e); color: #d0e6ff; }
         .btn-azul-preto i { color: #6aadff; }
-
-        .btn-azul-escuro {
-            background: linear-gradient(145deg, #0a1f3d, #142b4a);
-            color: #b8d4ff;
-        }
+        .btn-azul-escuro { background: linear-gradient(145deg, #0a1f3d, #142b4a); color: #b8d4ff; }
         .btn-azul-escuro i { color: #5a9eff; }
-
-        .btn-azul-profundo {
-            background: linear-gradient(145deg, #1a3a6a, #0d2240);
-            color: #c8ddff;
-        }
+        .btn-azul-profundo { background: linear-gradient(145deg, #1a3a6a, #0d2240); color: #c8ddff; }
         .btn-azul-profundo i { color: #7ab0ff; }
-
-        .btn-azul-marinho {
-            background: linear-gradient(145deg, #0a2a4a, #1a4a7a);
-            color: #c0d8ff;
-        }
+        .btn-azul-marinho { background: linear-gradient(145deg, #0a2a4a, #1a4a7a); color: #c0d8ff; }
         .btn-azul-marinho i { color: #6aaaff; }
-
-        .btn-azul-celeste {
-            background: linear-gradient(145deg, #1a5a8a, #3a7aaa);
-            color: #d8ecff;
-        }
+        .btn-azul-celeste { background: linear-gradient(145deg, #1a5a8a, #3a7aaa); color: #d8ecff; }
         .btn-azul-celeste i { color: #8ac8ff; }
 
         /* ---- AZUL-VERDE ---- */
-        .btn-azul-verde {
-            background: linear-gradient(145deg, #0f3b5c, #1f6d4a);
-            color: #d4f0e0;
-        }
+        .btn-azul-verde { background: linear-gradient(145deg, #0f3b5c, #1f6d4a); color: #d4f0e0; }
         .btn-azul-verde i { color: #5fe6a0; }
-
-        .btn-azul-verde-claro {
-            background: linear-gradient(145deg, #1a5a6a, #3a9a6a);
-            color: #e0f7ea;
-        }
+        .btn-azul-verde-claro { background: linear-gradient(145deg, #1a5a6a, #3a9a6a); color: #e0f7ea; }
         .btn-azul-verde-claro i { color: #7af0b0; }
-
-        .btn-verde-azulado {
-            background: linear-gradient(145deg, #1a6a5a, #2a5a8a);
-            color: #d0f0e8;
-        }
+        .btn-verde-azulado { background: linear-gradient(145deg, #1a6a5a, #2a5a8a); color: #d0f0e8; }
         .btn-verde-azulado i { color: #6ae0c0; }
-
-        .btn-azul-turquesa {
-            background: linear-gradient(145deg, #0a5a6a, #2a8a7a);
-            color: #d0f8f0;
-        }
+        .btn-azul-turquesa { background: linear-gradient(145deg, #0a5a6a, #2a8a7a); color: #d0f8f0; }
         .btn-azul-turquesa i { color: #6af0d0; }
 
         /* ---- VERDES ---- */
-        .btn-verde-branco {
-            background: linear-gradient(145deg, #1b7a4a, #b0d6b0);
-            color: #0b2b1a;
-        }
+        .btn-verde-branco { background: linear-gradient(145deg, #1b7a4a, #b0d6b0); color: #0b2b1a; }
         .btn-verde-branco i { color: #f0fff0; }
-
-        .btn-verde-escuro {
-            background: linear-gradient(145deg, #0d4a2a, #1a6a3a);
-            color: #d0f0d0;
-        }
+        .btn-verde-escuro { background: linear-gradient(145deg, #0d4a2a, #1a6a3a); color: #d0f0d0; }
         .btn-verde-escuro i { color: #6ae08a; }
-
-        .btn-verde-claro {
-            background: linear-gradient(145deg, #3a9a5a, #8acf8a);
-            color: #0a2a1a;
-        }
+        .btn-verde-claro { background: linear-gradient(145deg, #3a9a5a, #8acf8a); color: #0a2a1a; }
         .btn-verde-claro i { color: #f0fff0; }
-
-        .btn-verde-limao {
-            background: linear-gradient(145deg, #4a8a2a, #7aba4a);
-            color: #f0f8e0;
-        }
+        .btn-verde-limao { background: linear-gradient(145deg, #4a8a2a, #7aba4a); color: #f0f8e0; }
         .btn-verde-limao i { color: #b0f06a; }
 
         /* ---- ROXOS ---- */
-        .btn-roxo-azul {
-            background: linear-gradient(145deg, #3d1f6e, #1b3a7a);
-            color: #e4d6ff;
-        }
+        .btn-roxo-azul { background: linear-gradient(145deg, #3d1f6e, #1b3a7a); color: #e4d6ff; }
         .btn-roxo-azul i { color: #b28aff; }
-
-        .btn-roxo-escuro {
-            background: linear-gradient(145deg, #2a105a, #1a2a6a);
-            color: #d8ccff;
-        }
+        .btn-roxo-escuro { background: linear-gradient(145deg, #2a105a, #1a2a6a); color: #d8ccff; }
         .btn-roxo-escuro i { color: #a080ff; }
-
-        .btn-roxo-claro {
-            background: linear-gradient(145deg, #5a2a8a, #7a4aaa);
-            color: #ece0ff;
-        }
+        .btn-roxo-claro { background: linear-gradient(145deg, #5a2a8a, #7a4aaa); color: #ece0ff; }
         .btn-roxo-claro i { color: #c89aff; }
 
         /* ---- LARANJA / VERMELHO ---- */
-        .btn-laranja-vinho {
-            background: linear-gradient(145deg, #a8481a, #6a1f3a);
-            color: #ffded0;
-        }
+        .btn-laranja-vinho { background: linear-gradient(145deg, #a8481a, #6a1f3a); color: #ffded0; }
         .btn-laranja-vinho i { color: #ff9f6a; }
-
-        .btn-vermelho-escuro {
-            background: linear-gradient(145deg, #7a1a2a, #4a0a1a);
-            color: #ffd0d0;
-        }
+        .btn-vermelho-escuro { background: linear-gradient(145deg, #7a1a2a, #4a0a1a); color: #ffd0d0; }
         .btn-vermelho-escuro i { color: #ff7a7a; }
-
-        .btn-laranja-dourado {
-            background: linear-gradient(145deg, #b06a1a, #7a3a1a);
-            color: #ffe8c0;
-        }
+        .btn-laranja-dourado { background: linear-gradient(145deg, #b06a1a, #7a3a1a); color: #ffe8c0; }
         .btn-laranja-dourado i { color: #ffb06a; }
 
         /* ---- CINZA / NEUTRO ---- */
-        .btn-cinza-azul {
-            background: linear-gradient(145deg, #2a3a4a, #1a2a4a);
-            color: #c8d8f0;
-        }
+        .btn-cinza-azul { background: linear-gradient(145deg, #2a3a4a, #1a2a4a); color: #c8d8f0; }
         .btn-cinza-azul i { color: #8ab8ff; }
-
-        .btn-cinza-escuro {
-            background: linear-gradient(145deg, #1a2a3a, #0a1a2a);
-            color: #b0c8e0;
-        }
+        .btn-cinza-escuro { background: linear-gradient(145deg, #1a2a3a, #0a1a2a); color: #b0c8e0; }
         .btn-cinza-escuro i { color: #6a9ae0; }
-
-        .btn-cinza-prata {
-            background: linear-gradient(145deg, #3a4a5a, #2a3a4a);
-            color: #d0e0f0;
-        }
+        .btn-cinza-prata { background: linear-gradient(145deg, #3a4a5a, #2a3a4a); color: #d0e0f0; }
         .btn-cinza-prata i { color: #9ab0d0; }
 
         /* ---- ESPECIAIS ---- */
-        .btn-dourado-azul {
-            background: linear-gradient(145deg, #8a7a2a, #1a3a6a);
-            color: #f0e8c0;
-        }
+        .btn-dourado-azul { background: linear-gradient(145deg, #8a7a2a, #1a3a6a); color: #f0e8c0; }
         .btn-dourado-azul i { color: #ffd866; }
-
-        .btn-rosa-azul {
-            background: linear-gradient(145deg, #7a2a5a, #2a3a7a);
-            color: #f0d8e8;
-        }
+        .btn-rosa-azul { background: linear-gradient(145deg, #7a2a5a, #2a3a7a); color: #f0d8e8; }
         .btn-rosa-azul i { color: #ff8ac8; }
 
-        /* ----- RODAPÉ ----- */
         .footer {
             margin-top: 3rem;
             display: flex;
@@ -338,7 +387,6 @@
             color: #4a9eff;
         }
 
-        /* ----- RESPONSIVO ----- */
         @media (max-width: 1024px) {
             .grid-botoes {
                 grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -347,94 +395,35 @@
         }
 
         @media (max-width: 768px) {
-            .dashboard {
-                padding: 2rem 1.2rem 2.5rem;
-                border-radius: 2.5rem;
-            }
-            .header h1 {
-                font-size: 2.2rem;
-            }
-            .header .sub {
-                font-size: 0.9rem;
-                letter-spacing: 2px;
-            }
-            .grid-botoes {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 1rem;
-            }
-            .btn-card {
-                min-height: 110px;
-                padding: 1.2rem 0.6rem;
-            }
-            .btn-card i {
-                font-size: 1.8rem;
-            }
-            .btn-card .btn-label {
-                font-size: 0.8rem;
-            }
-            .btn-card .btn-desc {
-                font-size: 0.6rem;
-            }
+            .dashboard { padding: 2rem 1.2rem 2.5rem; border-radius: 2.5rem; }
+            .header h1 { font-size: 2.2rem; }
+            .header .sub { font-size: 0.9rem; letter-spacing: 2px; }
+            .grid-botoes { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
+            .btn-card { min-height: 110px; padding: 1.2rem 0.6rem; }
+            .btn-card i { font-size: 1.8rem; }
+            .btn-card .btn-label { font-size: 0.8rem; }
+            .btn-card .btn-desc { font-size: 0.6rem; }
         }
 
         @media (max-width: 550px) {
-            body {
-                padding: 0.8rem 0.5rem;
-            }
-            .dashboard {
-                padding: 1rem 0.8rem 1.5rem;
-                border-radius: 1.8rem;
-            }
-            .header h1 {
-                font-size: 1.6rem;
-            }
-            .header .logo-icon {
-                font-size: 2rem;
-                padding: 0.4rem 0.8rem;
-            }
-            .header .sub {
-                font-size: 0.7rem;
-                letter-spacing: 1px;
-            }
-            .grid-botoes {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.7rem;
-            }
-            .btn-card {
-                min-height: 95px;
-                padding: 0.8rem 0.4rem;
-                border-radius: 1.2rem;
-            }
-            .btn-card i {
-                font-size: 1.4rem;
-                margin-bottom: 0.2rem;
-            }
-            .btn-card .btn-label {
-                font-size: 0.7rem;
-            }
-            .btn-card .btn-desc {
-                font-size: 0.55rem;
-            }
+            body { padding: 0.8rem 0.5rem; }
+            .dashboard { padding: 1rem 0.8rem 1.5rem; border-radius: 1.8rem; }
+            .header h1 { font-size: 1.6rem; }
+            .header .logo-icon { font-size: 2rem; padding: 0.4rem 0.8rem; }
+            .header .sub { font-size: 0.7rem; letter-spacing: 1px; }
+            .grid-botoes { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
+            .btn-card { min-height: 95px; padding: 0.8rem 0.4rem; border-radius: 1.2rem; }
+            .btn-card i { font-size: 1.4rem; margin-bottom: 0.2rem; }
+            .btn-card .btn-label { font-size: 0.7rem; }
+            .btn-card .btn-desc { font-size: 0.55rem; }
         }
 
         @media (max-width: 380px) {
-            .grid-botoes {
-                gap: 0.5rem;
-            }
-            .btn-card {
-                min-height: 80px;
-                padding: 0.6rem 0.2rem;
-                border-radius: 0.8rem;
-            }
-            .btn-card i {
-                font-size: 1.2rem;
-            }
-            .btn-card .btn-label {
-                font-size: 0.6rem;
-            }
-            .btn-card .btn-desc {
-                display: none;
-            }
+            .grid-botoes { gap: 0.5rem; }
+            .btn-card { min-height: 80px; padding: 0.6rem 0.2rem; border-radius: 0.8rem; }
+            .btn-card i { font-size: 1.2rem; }
+            .btn-card .btn-label { font-size: 0.6rem; }
+            .btn-card .btn-desc { display: none; }
         }
     </style>
 </head>
@@ -444,151 +433,157 @@
 
         <!-- HEADER -->
         <div class="header">
-            <div class="logo-icon">
-                <i class="fas fa-graduation-cap"></i>
+            <img src="https://drive.google.com/thumbnail?id=1grLQonL25DWGHfjY71k-D_MaJ99WCsUa&sz=w1000" alt="Logo CDF" class="logo-img" />
+            <div class="titulo-bloco">
+                <h1>CDF Automação <span>Educacional</span></h1>
+                <div class="sub">Plataforma de Gestão do Conhecimento</div>
+                <div class="divider"></div>
             </div>
-            <h1>CDF Automação <span>Educacional</span></h1>
-            <div class="sub">Plataforma de Gestão do Conhecimento</div>
-            <div class="divider"></div>
+        </div>
+
+        <!-- CARD DE DESTAQUE NO TOPO -->
+        <div class="destaque-wrapper">
+            <div class="destaque-titulo-geral">
+                <i class="fas fa-star"></i>
+                Acessos Rápidos
+            </div>
+            <div class="destaque-grid">
+                <a href="#" class="btn-destaque destaque-bb" target="_blank">
+                    <i class="fas fa-university"></i>
+                    <span class="destaque-label">Banco do Brasil</span>
+                </a>
+                <a href="#" class="btn-destaque destaque-sei" target="_blank">
+                    <i class="fas fa-folder-open"></i>
+                    <span class="destaque-label">Sistema SEI</span>
+                </a>
+                <a href="#" class="btn-destaque destaque-contedu" target="_blank">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="destaque-label">ContEdu</span>
+                </a>
+                <a href="#" class="btn-destaque destaque-escolar" target="_blank">
+                    <i class="fas fa-school"></i>
+                    <span class="destaque-label">Sistema Escolar</span>
+                </a>
+            </div>
         </div>
 
         <!-- GRID DE 20 BOTÕES - TEMA EDUCAÇÃO -->
         <div class="grid-botoes">
 
-            <!-- 1) Portal do Aluno -->
             <a href="https://devfjss.github.io/login-nota-tecnica-cdf/" class="btn-card btn-azul-preto" target="_blank">
                 <i class="fas fa-clipboard-list"></i>
                 <span class="btn-label">Gerar nota técnica</span>
                 <span class="btn-desc">Gabinete</span>
             </a>
 
-            <!-- 2) Sala de Aula Virtual -->
             <a href="#" class="btn-card btn-azul-escuro" target="_blank">
                 <i class="fas fa-chalkboard-teacher"></i>
                 <span class="btn-label">Sala Virtual</span>
                 <span class="btn-desc">Aulas ao vivo</span>
             </a>
 
-            <!-- 3) Biblioteca Digital -->
             <a href="#" class="btn-card btn-azul-profundo" target="_blank">
                 <i class="fas fa-book-open"></i>
                 <span class="btn-label">Biblioteca</span>
                 <span class="btn-desc">Acervo digital</span>
             </a>
 
-            <!-- 4) Notas e Frequência -->
             <a href="#" class="btn-card btn-azul-marinho" target="_blank">
                 <i class="fas fa-user-graduate"></i>
                 <span class="btn-label">Notas</span>
                 <span class="btn-desc">Boletim escolar</span>
             </a>
 
-            <!-- 5) Calendário Escolar -->
             <a href="#" class="btn-card btn-azul-celeste" target="_blank">
                 <i class="fas fa-calendar-alt"></i>
                 <span class="btn-label">Calendário</span>
                 <span class="btn-desc">Datas e eventos</span>
             </a>
 
-            <!-- 6) Cursos e Grade -->
             <a href="#" class="btn-card btn-azul-verde" target="_blank">
                 <i class="fas fa-layer-group"></i>
                 <span class="btn-label">Grade Curricular</span>
                 <span class="btn-desc">Matrizes</span>
             </a>
 
-            <!-- 7) Professores -->
             <a href="#" class="btn-card btn-azul-verde-claro" target="_blank">
                 <i class="fas fa-user-tie"></i>
                 <span class="btn-label">Corpo Docente</span>
                 <span class="btn-desc">Professores</span>
             </a>
 
-            <!-- 8) Turmas -->
             <a href="#" class="btn-card btn-verde-azulado" target="_blank">
                 <i class="fas fa-users"></i>
                 <span class="btn-label">Turmas</span>
                 <span class="btn-desc">Alunos por sala</span>
             </a>
 
-            <!-- 9) Material Didático -->
             <a href="#" class="btn-card btn-azul-turquesa" target="_blank">
                 <i class="fas fa-file-pdf"></i>
                 <span class="btn-label">Material</span>
                 <span class="btn-desc">Apostilas</span>
             </a>
 
-            <!-- 10) Provas e Avaliações -->
             <a href="#" class="btn-card btn-verde-branco" target="_blank">
                 <i class="fas fa-edit"></i>
                 <span class="btn-label">Avaliações</span>
                 <span class="btn-desc">Provas e testes</span>
             </a>
 
-            <!-- 11) Secretaria -->
             <a href="#" class="btn-card btn-verde-escuro" target="_blank">
                 <i class="fas fa-building"></i>
                 <span class="btn-label">Secretaria</span>
                 <span class="btn-desc">Documentação</span>
             </a>
 
-            <!-- 12) Eventos -->
             <a href="#" class="btn-card btn-verde-claro" target="_blank">
                 <i class="fas fa-calendar-check"></i>
                 <span class="btn-label">Eventos</span>
                 <span class="btn-desc">Palestras</span>
             </a>
 
-            <!-- 13) Bolsas e Financiamentos -->
             <a href="#" class="btn-card btn-verde-limao" target="_blank">
                 <i class="fas fa-hand-holding-usd"></i>
                 <span class="btn-label">Bolsas</span>
                 <span class="btn-desc">Financiamento</span>
             </a>
 
-            <!-- 14) Atividades Extracurriculares -->
             <a href="#" class="btn-card btn-roxo-azul" target="_blank">
                 <i class="fas fa-futbol"></i>
                 <span class="btn-label">Extracurriculares</span>
                 <span class="btn-desc">Esportes e cultura</span>
             </a>
 
-            <!-- 15) Estágios -->
             <a href="#" class="btn-card btn-roxo-escuro" target="_blank">
                 <i class="fas fa-briefcase"></i>
                 <span class="btn-label">Estágios</span>
                 <span class="btn-desc">Oportunidades</span>
             </a>
 
-            <!-- 16) TCC e Monografias -->
             <a href="#" class="btn-card btn-roxo-claro" target="_blank">
                 <i class="fas fa-scroll"></i>
                 <span class="btn-label">TCC</span>
                 <span class="btn-desc">Monografias</span>
             </a>
 
-            <!-- 17) Pesquisa Científica -->
             <a href="#" class="btn-card btn-laranja-vinho" target="_blank">
                 <i class="fas fa-flask"></i>
                 <span class="btn-label">Pesquisa</span>
                 <span class="btn-desc">Iniciação científica</span>
             </a>
 
-            <!-- 18) Extensão Comunitária -->
             <a href="#" class="btn-card btn-vermelho-escuro" target="_blank">
                 <i class="fas fa-hands-helping"></i>
                 <span class="btn-label">Extensão</span>
                 <span class="btn-desc">Ação comunitária</span>
             </a>
 
-            <!-- 19) Monitoria -->
             <a href="#" class="btn-card btn-laranja-dourado" target="_blank">
                 <i class="fas fa-chalkboard"></i>
                 <span class="btn-label">Monitoria</span>
                 <span class="btn-desc">Apoio acadêmico</span>
             </a>
 
-            <!-- 20) Configurações Educacionais -->
             <a href="#" class="btn-card btn-cinza-azul" target="_blank">
                 <i class="fas fa-cog"></i>
                 <span class="btn-label">Configurações</span>
