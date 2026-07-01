@@ -15,8 +15,8 @@
         body {
             font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
             min-height: 100vh;
-            background: linear-gradient(145deg, #0b1a2e 0%, #1a3a5c 100%);
-            padding: 2rem 1.5rem;
+            background: #0a0f1a;
+            padding: 1.5rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,37 +25,61 @@
         .dashboard {
             max-width: 1500px;
             width: 100%;
-            background: rgba(10, 30, 50, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 3.5rem;
-            padding: 2.5rem 2.8rem 3.5rem;
-            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(70, 150, 255, 0.15);
+            background: #121926;
+            border-radius: 2.5rem;
+            padding: 2rem 2.2rem 2.8rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+            border: 1px solid rgba(74, 158, 255, 0.15);
+            position: relative;
+            overflow: hidden;
         }
 
+        .dashboard::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(74, 158, 255, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .dashboard::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 200, 255, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* HEADER */
         .header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 1.6rem;
-            margin-bottom: 3rem;
-            text-align: left;
+            justify-content: space-between;
+            margin-bottom: 2.5rem;
             position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+            gap: 1.2rem;
         }
 
-        .header .logo-img {
-            width: 170px;
-            height: 170px;
-            border-radius: 50%;
-            box-shadow: 0 0 30px rgba(74, 158, 255, 0.4);
-            flex-shrink: 0;
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
 
         /* ----- LOGO ANIMADA SVG ----- */
         .logo-anim {
-            width: 170px;
-            height: 170px;
+            width: 120px;
+            height: 120px;
             flex-shrink: 0;
         }
 
@@ -93,7 +117,7 @@
 
         .logo-anim .ring {
             fill: none;
-            stroke: #d4af37;
+            stroke: #4a9eff;
             stroke-width: 1;
             opacity: 0.35;
         }
@@ -103,8 +127,8 @@
             transform-origin: 200px 200px;
         }
         @keyframes cdfHubGlow {
-            0%, 100% { filter: drop-shadow(0 0 0px rgba(212,175,55,0)); }
-            50% { filter: drop-shadow(0 0 6px rgba(212,175,55,0.55)); }
+            0%, 100% { filter: drop-shadow(0 0 0px rgba(74, 158, 255, 0)); }
+            50% { filter: drop-shadow(0 0 6px rgba(74, 158, 255, 0.55)); }
         }
 
         .logo-anim .wordmark {
@@ -113,189 +137,269 @@
             fill: #ffffff;
         }
 
-        .header .titulo-bloco {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        @media (max-width: 600px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .header .titulo-bloco {
-                align-items: center;
-            }
-            .header .logo-img {
-                width: 110px;
-                height: 110px;
-            }
-        }
-
-        .header .logo-icon {
-            font-size: 2.8rem;
-            color: #4a9eff;
-            background: rgba(30, 80, 160, 0.3);
-            padding: 0.6rem 1.2rem;
-            border-radius: 60px;
-            margin-bottom: 0.8rem;
-            border: 1px solid rgba(74, 158, 255, 0.25);
-            box-shadow: 0 0 30px rgba(74, 158, 255, 0.15);
-        }
-
-        .header h1 {
-            font-size: 2.8rem;
+        .header-titles h1 {
+            font-size: 2rem;
             font-weight: 700;
-            letter-spacing: -0.02em;
-            background: linear-gradient(to right, #b0d6ff, #ffffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 30px rgba(74, 158, 255, 0.3);
-            line-height: 1.2;
+            color: #f0e6c8;
+            letter-spacing: -0.5px;
         }
 
-        .header .sub {
-            font-size: 1.1rem;
-            color: #8bb9fe;
-            letter-spacing: 4px;
+        .header-titles h1 span {
+            color: #4a9eff;
+        }
+
+        .header-titles .sub {
+            font-size: 0.85rem;
+            color: #dee7eb;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-top: 0.3rem;
-            opacity: 0.8;
             font-weight: 300;
         }
 
-        .header .divider {
-            width: 120px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #4a9eff, transparent);
-            border-radius: 10px;
-            margin-top: 0.8rem;
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        /* ----- CARD DE DESTAQUE (TOPO) - RETÂNGULO COM ACESSOS RÁPIDOS ----- */
-        .destaque-wrapper {
-            margin-bottom: 2.2rem;
-            width: 100%;
-            border-radius: 2rem;
-            padding: 1.6rem 1.8rem;
-            background: linear-gradient(120deg, #14335c, #1f4d80 55%, #1a3a6a 100%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255,255,255,0.08);
+        .header-badge {
+            background: rgba(74, 158, 255, 0.08);
+            border: 1px solid rgba(74, 158, 255, 0.15);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            color: #4a9eff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-badge i {
+            font-size: 0.9rem;
+        }
+
+        .header-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4a9eff, #1a5fa0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* ===== CAIXA DE PESQUISA - FUNDO VERDE ===== */
+        .search-wrapper {
+            margin-bottom: 2rem;
             position: relative;
-            overflow: hidden;
+            z-index: 1;
         }
 
-        .destaque-wrapper::before {
-            content: '';
+        .search-wrapper .search-icon {
             position: absolute;
-            inset: 0;
-            border-radius: 2rem;
-            padding: 2px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent 60%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(46, 125, 50, 0.6);
+            font-size: 1rem;
+            transition: color 0.3s ease;
             pointer-events: none;
         }
 
-        .destaque-titulo-geral {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: #cfe3ff;
+        .search-wrapper input {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            background: linear-gradient(135deg, #1b7a4a, #0d4a2a);
+            border: 2px solid rgba(46, 125, 50, 0.4);
+            border-radius: 16px;
             font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 1.1rem;
-            opacity: 0.85;
+            color: #ffffff;
+            outline: none;
+            transition: all 0.4s ease;
+            font-family: inherit;
+            backdrop-filter: blur(8px);
         }
 
-        .destaque-titulo-geral i {
-            color: #ffd866;
+        .search-wrapper input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+        }
+
+        .search-wrapper input:focus {
+            border-color: rgba(46, 125, 50, 0.8);
+            background: linear-gradient(135deg, #2e8a5a, #1a5a3a);
+            box-shadow: 0 0 30px rgba(46, 125, 50, 0.25), inset 0 0 20px rgba(46, 125, 50, 0.1);
+            transform: scale(1.005);
+        }
+
+        .search-wrapper input:focus ~ .search-icon {
+            color: #a5ffb0;
+        }
+
+        .search-wrapper .search-shortcut {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            pointer-events: none;
+        }
+
+        .search-wrapper .clear-search {
+            position: absolute;
+            right: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            display: none;
+            padding: 4px;
+        }
+
+        .search-wrapper .clear-search:hover {
+            color: #ef5350;
+        }
+
+        .search-wrapper .clear-search.visible {
+            display: block;
+        }
+
+        /* Contador de resultados */
+        .search-counter {
+            font-size: 0.75rem;
+            color: rgba(46, 125, 50, 0.6);
+            margin-top: 0.6rem;
+            text-align: right;
+            transition: opacity 0.3s ease;
+            min-height: 1.2rem;
+        }
+
+        .search-counter strong {
+            color: #4cdf8b;
+            font-weight: 600;
+        }
+
+        /* DESTAQUE - ACESSOS RÁPIDOS */
+        .destaque-wrapper {
+            margin-bottom: 2.2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .destaque-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
+            gap: 0.8rem;
         }
 
         .btn-destaque {
             display: flex;
             align-items: center;
-            gap: 0.9rem;
-            padding: 1rem 1.1rem;
-            border-radius: 1.4rem;
+            gap: 0.8rem;
+            padding: 0.9rem 1.2rem;
+            border-radius: 1.2rem;
             text-decoration: none;
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1);
+            transition: all 0.3s ease;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
         }
 
         .btn-destaque i {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             flex-shrink: 0;
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.25));
-        }
-
-        .btn-destaque .destaque-label {
-            line-height: 1.25;
         }
 
         .btn-destaque:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 14px 26px rgba(0, 0, 0, 0.4);
-            border-color: rgba(255, 255, 255, 0.35);
+            transform: translateY(-3px);
+            background: rgba(74, 158, 255, 0.12);
+            border-color: rgba(74, 158, 255, 0.35);
+            box-shadow: 0 10px 30px rgba(74, 158, 255, 0.2);
         }
 
+        /* CORES DE FUNDO DOS BOTÕES DE ACESSO RÁPIDO - VERDE */
         .destaque-bb {
-            background: linear-gradient(135deg, #f4d100, #c9a600);
-            color: #1a1a00;
+            background: linear-gradient(135deg, #1b7a4a, #0d4a2a);
+            border-color: rgba(46, 125, 50, 0.3);
         }
-        .destaque-bb i { color: #1a1a00; }
+        .destaque-bb i { color: #a5ffb0; }
+        .destaque-bb:hover {
+            background: linear-gradient(135deg, #2e8a5a, #1a5a3a);
+            border-color: rgba(46, 125, 50, 0.6);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
+        }
 
         .destaque-sei {
-            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+            background: linear-gradient(135deg, #1b7a4a, #0d4a2a);
+            border-color: rgba(46, 125, 50, 0.3);
         }
         .destaque-sei i { color: #a5ffb0; }
+        .destaque-sei:hover {
+            background: linear-gradient(135deg, #2e8a5a, #1a5a3a);
+            border-color: rgba(46, 125, 50, 0.6);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
+        }
 
         .destaque-contedu {
-            background: linear-gradient(135deg, #8e24aa, #5e1487);
+            background: linear-gradient(135deg, #1b7a4a, #0d4a2a);
+            border-color: rgba(46, 125, 50, 0.3);
         }
-        .destaque-contedu i { color: #f0c8ff; }
+        .destaque-contedu i { color: #a5ffb0; }
+        .destaque-contedu:hover {
+            background: linear-gradient(135deg, #2e8a5a, #1a5a3a);
+            border-color: rgba(46, 125, 50, 0.6);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
+        }
 
         .destaque-escolar {
-            background: linear-gradient(135deg, #1e88e5, #0d47a1);
+            background: linear-gradient(135deg, #1b7a4a, #0d4a2a);
+            border-color: rgba(46, 125, 50, 0.3);
         }
-        .destaque-escolar i { color: #c8e6ff; }
-
-        @media (max-width: 768px) {
-            .destaque-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 420px) {
-            .destaque-grid {
-                grid-template-columns: 1fr;
-            }
-            .destaque-wrapper {
-                padding: 1.2rem 1rem;
-            }
+        .destaque-escolar i { color: #a5ffb0; }
+        .destaque-escolar:hover {
+            background: linear-gradient(135deg, #2e8a5a, #1a5a3a);
+            border-color: rgba(46, 125, 50, 0.6);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
         }
 
-        /* ----- GRID DOS BOTÕES ----- */
+        .destaque-label {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .destaque-label small {
+            font-weight: 300;
+            font-size: 0.65rem;
+            opacity: 0.7;
+        }
+
+        /* GRID DOS BOTÕES */
         .grid-botoes {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 1.4rem;
-            margin-top: 0.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .btn-card {
@@ -303,28 +407,34 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 1.6rem 0.8rem;
-            border-radius: 2rem;
+            padding: 1.4rem 0.8rem;
+            border-radius: 1.5rem;
             text-decoration: none;
-            color: #fff;
-            font-weight: 600;
-            font-size: 0.95rem;
+            color: #e8e0d0;
+            font-weight: 500;
+            font-size: 0.85rem;
             text-align: center;
-            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(4px);
+            min-height: 110px;
             position: relative;
             overflow: hidden;
-            min-height: 120px;
         }
 
-        .btn-card::before {
+        /* Classe para ocultar itens filtrados */
+        .btn-card.hidden {
+            display: none !important;
+        }
+
+        .btn-card::after {
             content: '';
             position: absolute;
             inset: 0;
-            border-radius: 2rem;
-            padding: 2px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent 60%);
+            border-radius: 1.5rem;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(74, 158, 255, 0.1), transparent 60%);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
@@ -333,158 +443,191 @@
         }
 
         .btn-card i {
-            font-size: 2.2rem;
-            margin-bottom: 0.4rem;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-            transition: transform 0.2s ease;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s ease;
         }
 
         .btn-card .btn-label {
-            font-size: 0.9rem;
-            line-height: 1.3;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            font-size: 0.8rem;
+            line-height: 1.2;
             letter-spacing: 0.3px;
         }
 
         .btn-card .btn-desc {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 300;
-            opacity: 0.75;
-            margin-top: 0.15rem;
+            opacity: 0.4;
+            margin-top: 0.2rem;
             letter-spacing: 0.5px;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
         }
 
         .btn-card:hover {
-            transform: translateY(-6px) scale(1.03);
-            box-shadow: 0 18px 35px -6px rgba(0, 0, 0, 0.7);
-            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+            background: rgba(74, 158, 255, 0.08);
+            border-color: rgba(74, 158, 255, 0.25);
+            box-shadow: 0 12px 35px rgba(74, 158, 255, 0.15);
         }
 
         .btn-card:hover i {
-            transform: scale(1.08);
+            transform: scale(1.1);
         }
 
-        .btn-card:active {
-            transform: scale(0.95) translateY(0px);
+        /* CORES DOS ÍCONES POR GRUPO */
+        .btn-card .fa-clipboard-list { color: #4a9eff; }
+        .btn-card .fa-chalkboard-teacher { color: #4fc3f7; }
+        .btn-card .fa-book-open { color: #81c784; }
+        .btn-card .fa-user-graduate { color: #ce93d8; }
+        .btn-card .fa-calendar-alt { color: #ffb74d; }
+        .btn-card .fa-layer-group { color: #4dd0e1; }
+        .btn-card .fa-user-tie { color: #9575cd; }
+        .btn-card .fa-users { color: #4fc3f7; }
+        .btn-card .fa-file-pdf { color: #ef5350; }
+        .btn-card .fa-edit { color: #4a9eff; }
+        .btn-card .fa-building { color: #81c784; }
+        .btn-card .fa-calendar-check { color: #ffb74d; }
+        .btn-card .fa-hand-holding-usd { color: #4a9eff; }
+        .btn-card .fa-futbol { color: #4dd0e1; }
+        .btn-card .fa-briefcase { color: #ce93d8; }
+        .btn-card .fa-scroll { color: #ffb74d; }
+        .btn-card .fa-flask { color: #4fc3f7; }
+        .btn-card .fa-hands-helping { color: #81c784; }
+        .btn-card .fa-chalkboard { color: #4a9eff; }
+        .btn-card .fa-cog { color: #8a9bb5; }
+
+        /* Mensagem quando nenhum resultado */
+        .no-results {
+            display: none;
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem 1rem;
+            color: rgba(138, 155, 181, 0.4);
+            font-size: 0.95rem;
         }
 
-        /* ---- AZUIS ---- */
-        .btn-azul-preto { background: linear-gradient(145deg, #0b2b4a, #0b1a2e); color: #d0e6ff; }
-        .btn-azul-preto i { color: #6aadff; }
-        .btn-azul-escuro { background: linear-gradient(145deg, #0a1f3d, #142b4a); color: #b8d4ff; }
-        .btn-azul-escuro i { color: #5a9eff; }
-        .btn-azul-profundo { background: linear-gradient(145deg, #1a3a6a, #0d2240); color: #c8ddff; }
-        .btn-azul-profundo i { color: #7ab0ff; }
-        .btn-azul-marinho { background: linear-gradient(145deg, #0a2a4a, #1a4a7a); color: #c0d8ff; }
-        .btn-azul-marinho i { color: #6aaaff; }
-        .btn-azul-celeste { background: linear-gradient(145deg, #1a5a8a, #3a7aaa); color: #d8ecff; }
-        .btn-azul-celeste i { color: #8ac8ff; }
+        .no-results i {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
 
-        /* ---- AZUL-VERDE ---- */
-        .btn-azul-verde { background: linear-gradient(145deg, #0f3b5c, #1f6d4a); color: #d4f0e0; }
-        .btn-azul-verde i { color: #5fe6a0; }
-        .btn-azul-verde-claro { background: linear-gradient(145deg, #1a5a6a, #3a9a6a); color: #e0f7ea; }
-        .btn-azul-verde-claro i { color: #7af0b0; }
-        .btn-verde-azulado { background: linear-gradient(145deg, #1a6a5a, #2a5a8a); color: #d0f0e8; }
-        .btn-verde-azulado i { color: #6ae0c0; }
-        .btn-azul-turquesa { background: linear-gradient(145deg, #0a5a6a, #2a8a7a); color: #d0f8f0; }
-        .btn-azul-turquesa i { color: #6af0d0; }
+        .no-results.visible {
+            display: block;
+        }
 
-        /* ---- VERDES ---- */
-        .btn-verde-branco { background: linear-gradient(145deg, #1b7a4a, #b0d6b0); color: #0b2b1a; }
-        .btn-verde-branco i { color: #f0fff0; }
-        .btn-verde-escuro { background: linear-gradient(145deg, #0d4a2a, #1a6a3a); color: #d0f0d0; }
-        .btn-verde-escuro i { color: #6ae08a; }
-        .btn-verde-claro { background: linear-gradient(145deg, #3a9a5a, #8acf8a); color: #0a2a1a; }
-        .btn-verde-claro i { color: #f0fff0; }
-        .btn-verde-limao { background: linear-gradient(145deg, #4a8a2a, #7aba4a); color: #f0f8e0; }
-        .btn-verde-limao i { color: #b0f06a; }
-
-        /* ---- ROXOS ---- */
-        .btn-roxo-azul { background: linear-gradient(145deg, #3d1f6e, #1b3a7a); color: #e4d6ff; }
-        .btn-roxo-azul i { color: #b28aff; }
-        .btn-roxo-escuro { background: linear-gradient(145deg, #2a105a, #1a2a6a); color: #d8ccff; }
-        .btn-roxo-escuro i { color: #a080ff; }
-        .btn-roxo-claro { background: linear-gradient(145deg, #5a2a8a, #7a4aaa); color: #ece0ff; }
-        .btn-roxo-claro i { color: #c89aff; }
-
-        /* ---- LARANJA / VERMELHO ---- */
-        .btn-laranja-vinho { background: linear-gradient(145deg, #a8481a, #6a1f3a); color: #ffded0; }
-        .btn-laranja-vinho i { color: #ff9f6a; }
-        .btn-vermelho-escuro { background: linear-gradient(145deg, #7a1a2a, #4a0a1a); color: #ffd0d0; }
-        .btn-vermelho-escuro i { color: #ff7a7a; }
-        .btn-laranja-dourado { background: linear-gradient(145deg, #b06a1a, #7a3a1a); color: #ffe8c0; }
-        .btn-laranja-dourado i { color: #ffb06a; }
-
-        /* ---- CINZA / NEUTRO ---- */
-        .btn-cinza-azul { background: linear-gradient(145deg, #2a3a4a, #1a2a4a); color: #c8d8f0; }
-        .btn-cinza-azul i { color: #8ab8ff; }
-        .btn-cinza-escuro { background: linear-gradient(145deg, #1a2a3a, #0a1a2a); color: #b0c8e0; }
-        .btn-cinza-escuro i { color: #6a9ae0; }
-        .btn-cinza-prata { background: linear-gradient(145deg, #3a4a5a, #2a3a4a); color: #d0e0f0; }
-        .btn-cinza-prata i { color: #9ab0d0; }
-
-        /* ---- ESPECIAIS ---- */
-        .btn-dourado-azul { background: linear-gradient(145deg, #8a7a2a, #1a3a6a); color: #f0e8c0; }
-        .btn-dourado-azul i { color: #ffd866; }
-        .btn-rosa-azul { background: linear-gradient(145deg, #7a2a5a, #2a3a7a); color: #f0d8e8; }
-        .btn-rosa-azul i { color: #ff8ac8; }
-
+        /* FOOTER */
         .footer {
-            margin-top: 3rem;
+            margin-top: 2.8rem;
             display: flex;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: rgba(140, 190, 255, 0.4);
-            letter-spacing: 1px;
-            border-top: 1px solid rgba(74, 158, 255, 0.1);
-            padding-top: 1.8rem;
-            font-weight: 300;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: rgba(138, 155, 181, 0.4);
+            border-top: 1px solid rgba(74, 158, 255, 0.06);
+            padding-top: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .footer i {
-            margin: 0 6px;
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(138, 155, 181, 0.4);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: rgba(74, 158, 255, 0.6);
+        }
+
+        .footer-dot {
             color: #4a9eff;
+            opacity: 0.3;
+            font-size: 0.4rem;
+            align-self: center;
         }
 
         @media (max-width: 1024px) {
             .grid-botoes {
-                grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-                gap: 1.2rem;
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 0.8rem;
             }
         }
 
         @media (max-width: 768px) {
-            .dashboard { padding: 2rem 1.2rem 2.5rem; border-radius: 2.5rem; }
-            .header h1 { font-size: 2.2rem; }
-            .header .sub { font-size: 0.9rem; letter-spacing: 2px; }
-            .grid-botoes { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
-            .btn-card { min-height: 110px; padding: 1.2rem 0.6rem; }
-            .btn-card i { font-size: 1.8rem; }
-            .btn-card .btn-label { font-size: 0.8rem; }
-            .btn-card .btn-desc { font-size: 0.6rem; }
-        }
+            body { padding: 0.8rem; }
+            .dashboard { padding: 1.2rem 1rem 1.8rem; border-radius: 1.8rem; }
 
-        @media (max-width: 550px) {
-            body { padding: 0.8rem 0.5rem; }
-            .dashboard { padding: 1rem 0.8rem 1.5rem; border-radius: 1.8rem; }
-            .header h1 { font-size: 1.6rem; }
-            .header .logo-icon { font-size: 2rem; padding: 0.4rem 0.8rem; }
-            .header .sub { font-size: 0.7rem; letter-spacing: 1px; }
-            .grid-botoes { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
-            .btn-card { min-height: 95px; padding: 0.8rem 0.4rem; border-radius: 1.2rem; }
-            .btn-card i { font-size: 1.4rem; margin-bottom: 0.2rem; }
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+            .header-left { gap: 1rem; }
+            .logo-anim { width: 65px; height: 65px; }
+            .header-titles h1 { font-size: 1.4rem; }
+            .header-titles .sub { font-size: 0.7rem; letter-spacing: 2px; }
+            .header-right { justify-content: flex-start; }
+
+            .search-wrapper input {
+                font-size: 0.85rem;
+                padding: 12px 16px 12px 44px;
+            }
+            .search-wrapper .search-icon {
+                left: 14px;
+                font-size: 0.85rem;
+            }
+            .search-wrapper .search-shortcut {
+                display: none;
+            }
+            .search-wrapper .clear-search {
+                right: 14px;
+            }
+
+            .destaque-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.6rem;
+            }
+            .btn-destaque { padding: 0.7rem 1rem; font-size: 0.75rem; }
+            .btn-destaque i { font-size: 1rem; }
+
+            .grid-botoes {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.6rem;
+            }
+            .btn-card { min-height: 90px; padding: 1rem 0.4rem; border-radius: 1rem; }
+            .btn-card i { font-size: 1.4rem; }
             .btn-card .btn-label { font-size: 0.7rem; }
-            .btn-card .btn-desc { font-size: 0.55rem; }
+            .btn-card .btn-desc { font-size: 0.5rem; }
+
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            .footer-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
         }
 
-        @media (max-width: 380px) {
-            .grid-botoes { gap: 0.5rem; }
-            .btn-card { min-height: 80px; padding: 0.6rem 0.2rem; border-radius: 0.8rem; }
-            .btn-card i { font-size: 1.2rem; }
+        @media (max-width: 420px) {
+            .destaque-grid { grid-template-columns: 1fr 1fr; }
+            .grid-botoes { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+            .btn-card { min-height: 75px; padding: 0.7rem 0.2rem; border-radius: 0.8rem; }
+            .btn-card i { font-size: 1.1rem; margin-bottom: 0.2rem; }
             .btn-card .btn-label { font-size: 0.6rem; }
             .btn-card .btn-desc { display: none; }
+            .logo-anim { width: 55px; height: 55px; }
+            .header-titles h1 { font-size: 1.1rem; }
+            .search-wrapper input { font-size: 0.8rem; padding: 10px 12px 10px 38px; }
+            .search-wrapper .search-icon { left: 12px; font-size: 0.75rem; }
+            .search-counter { font-size: 0.65rem; }
         }
     </style>
 </head>
@@ -494,201 +637,335 @@
 
         <!-- HEADER -->
         <div class="header">
-            <svg class="logo-anim" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <radialGradient id="hubGrad" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" stop-color="#1d5fa0"/>
-                        <stop offset="100%" stop-color="#0c2d52"/>
-                    </radialGradient>
-                </defs>
+            <div class="header-left">
+                <!-- LOGO ANIMADA -->
+                <svg class="logo-anim" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="hubGrad" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#1d5fa0"/>
+                            <stop offset="100%" stop-color="#0c2d52"/>
+                        </radialGradient>
+                    </defs>
 
-                <circle class="ring" cx="200" cy="200" r="150"/>
+                    <circle class="ring" cx="200" cy="200" r="150"/>
 
-                <g class="orbit-group">
-                    <line class="spoke" x1="200" y1="200" x2="200" y2="60"  stroke="#d4af37" stroke-width="2"/>
-                    <line class="spoke" x1="200" y1="200" x2="321" y2="130" stroke="#d4af37" stroke-width="2"/>
-                    <line class="spoke" x1="200" y1="200" x2="321" y2="270" stroke="#d4af37" stroke-width="2"/>
-                    <line class="spoke" x1="200" y1="200" x2="200" y2="340" stroke="#d4af37" stroke-width="2"/>
-                    <line class="spoke" x1="200" y1="200" x2="79"  y2="270" stroke="#d4af37" stroke-width="2"/>
-                    <line class="spoke" x1="200" y1="200" x2="79"  y2="130" stroke="#d4af37" stroke-width="2"/>
+                    <g class="orbit-group">
+                        <line class="spoke" x1="200" y1="200" x2="200" y2="60"  stroke="#4a9eff" stroke-width="2"/>
+                        <line class="spoke" x1="200" y1="200" x2="321" y2="130" stroke="#4a9eff" stroke-width="2"/>
+                        <line class="spoke" x1="200" y1="200" x2="321" y2="270" stroke="#4a9eff" stroke-width="2"/>
+                        <line class="spoke" x1="200" y1="200" x2="200" y2="340" stroke="#4a9eff" stroke-width="2"/>
+                        <line class="spoke" x1="200" y1="200" x2="79"  y2="270" stroke="#4a9eff" stroke-width="2"/>
+                        <line class="spoke" x1="200" y1="200" x2="79"  y2="130" stroke="#4a9eff" stroke-width="2"/>
 
-                    <g class="node n1"><circle cx="200" cy="60"  r="10" fill="#1d5fa0" stroke="#d4af37" stroke-width="1.5"/></g>
-                    <g class="node n2"><circle cx="321" cy="130" r="10" fill="#1d5fa0" stroke="#d4af37" stroke-width="1.5"/></g>
-                    <g class="node n3"><circle cx="321" cy="270" r="10" fill="#1d5fa0" stroke="#d4af37" stroke-width="1.5"/></g>
-                    <g class="node n4"><circle cx="200" cy="340" r="10" fill="#1d5fa0" stroke="#d4af37" stroke-width="1.5"/></g>
-                    <g class="node n5"><circle cx="79"  cy="270" r="10" fill="#1d5fa0" stroke="#d4af37" stroke-width="1.5"/></g>
-                    <g class="node n6"><circle cx="79"  cy="130" r="10" fill="#1d5fa0" stroke="#d4af37" stroke-width="1.5"/></g>
-                </g>
+                        <g class="node n1"><circle cx="200" cy="60"  r="10" fill="#1d5fa0" stroke="#4a9eff" stroke-width="1.5"/></g>
+                        <g class="node n2"><circle cx="321" cy="130" r="10" fill="#1d5fa0" stroke="#4a9eff" stroke-width="1.5"/></g>
+                        <g class="node n3"><circle cx="321" cy="270" r="10" fill="#1d5fa0" stroke="#4a9eff" stroke-width="1.5"/></g>
+                        <g class="node n4"><circle cx="200" cy="340" r="10" fill="#1d5fa0" stroke="#4a9eff" stroke-width="1.5"/></g>
+                        <g class="node n5"><circle cx="79"  cy="270" r="10" fill="#1d5fa0" stroke="#4a9eff" stroke-width="1.5"/></g>
+                        <g class="node n6"><circle cx="79"  cy="130" r="10" fill="#1d5fa0" stroke="#4a9eff" stroke-width="1.5"/></g>
+                    </g>
 
-                <circle class="hub-circle" cx="200" cy="200" r="62" fill="url(#hubGrad)" stroke="#d4af37" stroke-width="2"/>
-                <text class="wordmark" x="200" y="216" font-size="42" text-anchor="middle">CDF</text>
-            </svg>
-            <div class="titulo-bloco">
-                <h1>CDF Automação <span>Educacional</span></h1>
-                <div class="sub">Plataforma de Gestão do Conhecimento</div>
-                <div class="divider"></div>
+                    <circle class="hub-circle" cx="200" cy="200" r="62" fill="url(#hubGrad)" stroke="#4a9eff" stroke-width="2"/>
+                    <text class="wordmark" x="200" y="216" font-size="42" text-anchor="middle">CDF</text>
+                </svg>
+
+                <div class="header-titles">
+                    <h1>CDF <span>Automação Central de Acesso</span></h1>
+                    <div class="sub">Coordenação de Descentralização Financeira</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="header-badge">
+                    <i class="fas fa-crown"></i> Educacional
+                </div>
+                <div class="header-avatar">AD</div>
             </div>
         </div>
 
-        <!-- CARD DE DESTAQUE NO TOPO -->
+        <!-- ===== CAIXA DE PESQUISA - FUNDO VERDE ===== -->
+        <div class="search-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="🔎 Pesquisar sites... (ex: notas, biblioteca, secretaria)" 
+                onkeyup="filtrarLinks()"
+                autofocus
+            />
+            <button class="clear-search" id="clearSearch" onclick="limparBusca()">
+                <i class="fas fa-times-circle"></i>
+            </button>
+            <span class="search-shortcut">Ctrl + K</span>
+            <div class="search-counter" id="searchCounter"></div>
+        </div>
+
+        <!-- DESTAQUE - ACESSOS RÁPIDOS COM FUNDO VERDE -->
         <div class="destaque-wrapper">
-            <div class="destaque-titulo-geral">
-                <i class="fas fa-star"></i>
-                Acessos Rápidos
-            </div>
             <div class="destaque-grid">
                 <a href="#" class="btn-destaque destaque-bb" target="_blank">
                     <i class="fas fa-university"></i>
-                    <span class="destaque-label">Banco do Brasil</span>
+                    <span class="destaque-label">
+                        Banco do Brasil
+                        <small>Financeiro</small>
+                    </span>
                 </a>
                 <a href="#" class="btn-destaque destaque-sei" target="_blank">
                     <i class="fas fa-folder-open"></i>
-                    <span class="destaque-label">Sistema SEI</span>
+                    <span class="destaque-label">
+                        Sistema SEI
+                        <small>Processos</small>
+                    </span>
                 </a>
                 <a href="#" class="btn-destaque destaque-contedu" target="_blank">
                     <i class="fas fa-graduation-cap"></i>
-                    <span class="destaque-label">ContEdu</span>
+                    <span class="destaque-label">
+                        ContEdu
+                        <small>Gestão</small>
+                    </span>
                 </a>
-                <a href="#" class="btn-destaque destaque-escolar" target="_blank">
+                <a href="http://www.sec.ba.gov.br/siig/sistemaescolar/frame.asp" class="btn-destaque destaque-escolar" target="_blank">
                     <i class="fas fa-school"></i>
-                    <span class="destaque-label">Sistema Escolar</span>
+                    <span class="destaque-label">
+                        Sistema Escolar
+                        <small>Acadêmico</small>
+                    </span>
                 </a>
             </div>
         </div>
 
-        <!-- GRID DE 20 BOTÕES - TEMA EDUCAÇÃO -->
-        <div class="grid-botoes">
+        <!-- GRID DE 20 BOTÕES -->
+        <div class="grid-botoes" id="gridBotoes">
 
-            <a href="https://devfjss.github.io/login-nota-tecnica-cdf/" class="btn-card btn-azul-preto" target="_blank">
+            <a href="https://devfjss.github.io/login-nota-tecnica-cdf/" class="btn-card" target="_blank" data-search="nota técnica gabinete gerar">
                 <i class="fas fa-clipboard-list"></i>
                 <span class="btn-label">Gerar nota técnica</span>
                 <span class="btn-desc">Gabinete</span>
             </a>
 
-            <a href="#" class="btn-card btn-azul-escuro" target="_blank">
+            <a href="https://docs.google.com/spreadsheets/d/1vl_4QMPtPt79BmXwX1XndQ1cIzlNkzSWzNUPtabORsM/edit?gid=556974593#gid=556974593" class="btn-card" target="_blank" data-search="sala virtual aulas ao vivo">
                 <i class="fas fa-chalkboard-teacher"></i>
                 <span class="btn-label">Sala Virtual</span>
                 <span class="btn-desc">Aulas ao vivo</span>
             </a>
 
-            <a href="#" class="btn-card btn-azul-profundo" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="biblioteca acervo digital livros">
                 <i class="fas fa-book-open"></i>
                 <span class="btn-label">Biblioteca</span>
                 <span class="btn-desc">Acervo digital</span>
             </a>
 
-            <a href="#" class="btn-card btn-azul-marinho" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="notas boletim escolar aluno">
                 <i class="fas fa-user-graduate"></i>
                 <span class="btn-label">Notas</span>
                 <span class="btn-desc">Boletim escolar</span>
             </a>
 
-            <a href="#" class="btn-card btn-azul-celeste" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="calendário datas eventos">
                 <i class="fas fa-calendar-alt"></i>
                 <span class="btn-label">Calendário</span>
                 <span class="btn-desc">Datas e eventos</span>
             </a>
 
-            <a href="#" class="btn-card btn-azul-verde" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="grade curricular matrizes disciplinas">
                 <i class="fas fa-layer-group"></i>
                 <span class="btn-label">Grade Curricular</span>
                 <span class="btn-desc">Matrizes</span>
             </a>
 
-            <a href="#" class="btn-card btn-azul-verde-claro" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="corpo docente professores">
                 <i class="fas fa-user-tie"></i>
                 <span class="btn-label">Corpo Docente</span>
                 <span class="btn-desc">Professores</span>
             </a>
 
-            <a href="#" class="btn-card btn-verde-azulado" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="turmas alunos por sala">
                 <i class="fas fa-users"></i>
                 <span class="btn-label">Turmas</span>
                 <span class="btn-desc">Alunos por sala</span>
             </a>
 
-            <a href="#" class="btn-card btn-azul-turquesa" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="material apostilas pdf">
                 <i class="fas fa-file-pdf"></i>
                 <span class="btn-label">Material</span>
                 <span class="btn-desc">Apostilas</span>
             </a>
 
-            <a href="#" class="btn-card btn-verde-branco" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="avaliações provas testes">
                 <i class="fas fa-edit"></i>
                 <span class="btn-label">Avaliações</span>
                 <span class="btn-desc">Provas e testes</span>
             </a>
 
-            <a href="#" class="btn-card btn-verde-escuro" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="secretaria documentação">
                 <i class="fas fa-building"></i>
                 <span class="btn-label">Secretaria</span>
                 <span class="btn-desc">Documentação</span>
             </a>
 
-            <a href="#" class="btn-card btn-verde-claro" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="eventos palestras">
                 <i class="fas fa-calendar-check"></i>
                 <span class="btn-label">Eventos</span>
                 <span class="btn-desc">Palestras</span>
             </a>
 
-            <a href="#" class="btn-card btn-verde-limao" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="bolsas financiamento">
                 <i class="fas fa-hand-holding-usd"></i>
                 <span class="btn-label">Bolsas</span>
                 <span class="btn-desc">Financiamento</span>
             </a>
 
-            <a href="#" class="btn-card btn-roxo-azul" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="extracurriculares esportes cultura">
                 <i class="fas fa-futbol"></i>
                 <span class="btn-label">Extracurriculares</span>
                 <span class="btn-desc">Esportes e cultura</span>
             </a>
 
-            <a href="#" class="btn-card btn-roxo-escuro" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="estágios oportunidades">
                 <i class="fas fa-briefcase"></i>
                 <span class="btn-label">Estágios</span>
                 <span class="btn-desc">Oportunidades</span>
             </a>
 
-            <a href="#" class="btn-card btn-roxo-claro" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="tcc monografias">
                 <i class="fas fa-scroll"></i>
                 <span class="btn-label">TCC</span>
                 <span class="btn-desc">Monografias</span>
             </a>
 
-            <a href="#" class="btn-card btn-laranja-vinho" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="pesquisa iniciação científica">
                 <i class="fas fa-flask"></i>
                 <span class="btn-label">Pesquisa</span>
                 <span class="btn-desc">Iniciação científica</span>
             </a>
 
-            <a href="#" class="btn-card btn-vermelho-escuro" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="extensão ação comunitária">
                 <i class="fas fa-hands-helping"></i>
                 <span class="btn-label">Extensão</span>
                 <span class="btn-desc">Ação comunitária</span>
             </a>
 
-            <a href="#" class="btn-card btn-laranja-dourado" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="monitoria apoio acadêmico">
                 <i class="fas fa-chalkboard"></i>
                 <span class="btn-label">Monitoria</span>
                 <span class="btn-desc">Apoio acadêmico</span>
             </a>
 
-            <a href="#" class="btn-card btn-cinza-azul" target="_blank">
+            <a href="#" class="btn-card" target="_blank" data-search="configurações ajustes sistema">
                 <i class="fas fa-cog"></i>
                 <span class="btn-label">Configurações</span>
                 <span class="btn-desc">Ajustes do sistema</span>
             </a>
 
+            <!-- Mensagem de nenhum resultado -->
+            <div class="no-results" id="noResults">
+                <i class="fas fa-search-minus"></i>
+                Nenhum site encontrado para "<span id="searchTermDisplay"></span>"
+            </div>
+
         </div>
 
         <!-- FOOTER -->
         <div class="footer">
-            <i class="fas fa-circle" style="font-size: 0.4rem; align-self: center;"></i>
-            CDF Automação &bull; 20 botões educacionais &bull; v4.0
-            <i class="fas fa-circle" style="font-size: 0.4rem; align-self: center;"></i>
+            <span>
+                <span class="footer-dot"><i class="fas fa-circle"></i></span>
+                CDF Automação &bull; 20 botões educacionais
+                <span class="footer-dot"><i class="fas fa-circle"></i></span>
+            </span>
+            <div class="footer-links">
+                <a href="#">Suporte</a>
+                <a href="#">Documentação</a>
+                <a href="#">Contato</a>
+            </div>
         </div>
 
     </div>
+
+    <script>
+        // ===== FUNÇÃO DE FILTRO =====
+        function filtrarLinks() {
+            const input = document.getElementById('searchInput');
+            const termo = input.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.btn-card');
+            const noResults = document.getElementById('noResults');
+            const searchTermDisplay = document.getElementById('searchTermDisplay');
+            const clearBtn = document.getElementById('clearSearch');
+            const counter = document.getElementById('searchCounter');
+
+            let encontrados = 0;
+
+            cards.forEach(card => {
+                // Pega os dados de busca do atributo data-search
+                const searchData = card.getAttribute('data-search') || '';
+                // Pega também o texto visível para busca
+                const label = card.querySelector('.btn-label')?.textContent?.toLowerCase() || '';
+                const desc = card.querySelector('.btn-desc')?.textContent?.toLowerCase() || '';
+
+                // Combina tudo para busca
+                const textoBusca = (searchData + ' ' + label + ' ' + desc).toLowerCase();
+
+                if (termo === '' || textoBusca.includes(termo)) {
+                    card.classList.remove('hidden');
+                    encontrados++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Mostra/esconde mensagem de nenhum resultado
+            if (termo !== '' && encontrados === 0) {
+                noResults.classList.add('visible');
+                searchTermDisplay.textContent = termo;
+            } else {
+                noResults.classList.remove('visible');
+            }
+
+            // Mostra/esconde botão de limpar
+            if (termo !== '') {
+                clearBtn.classList.add('visible');
+            } else {
+                clearBtn.classList.remove('visible');
+            }
+
+            // Atualiza contador
+            const total = document.querySelectorAll('.btn-card:not(.hidden)').length;
+            if (termo !== '') {
+                counter.innerHTML = `<strong>${total}</strong> resultado${total !== 1 ? 's' : ''} encontrado${total !== 1 ? 's' : ''}`;
+                counter.style.opacity = '1';
+            } else {
+                counter.innerHTML = '';
+                counter.style.opacity = '0';
+            }
+        }
+
+        // ===== LIMPAR BUSCA =====
+        function limparBusca() {
+            document.getElementById('searchInput').value = '';
+            filtrarLinks();
+            document.getElementById('searchInput').focus();
+        }
+
+        // ===== ATALHO DE TECLADO (Ctrl+K) =====
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                document.getElementById('searchInput').focus();
+                document.getElementById('searchInput').select();
+            }
+            // ESC limpa a busca
+            if (e.key === 'Escape') {
+                const input = document.getElementById('searchInput');
+                if (document.activeElement === input) {
+                    limparBusca();
+                }
+            }
+        });
+
+        // ===== INICIALIZAÇÃO =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mostra todos os cards
+            filtrarLinks();
+        });
+    </script>
 
 </body>
 </html>
