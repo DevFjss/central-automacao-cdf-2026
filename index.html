@@ -475,9 +475,12 @@
 
         /* CORES DOS ÍCONES POR GRUPO */
         .btn-card .fa-clipboard-list { color: #4a9eff; }
-        .btn-card .fa-chalkboard-teacher { color: #4fc3f7; }
-        .btn-card .fa-book-open { color: #81c784; }
-        .btn-card .fa-user-graduate { color: #ce93d8; }
+
+        /* CORES PERSONALIZADAS */
+        .btn-card .fa-credit-card.sala-virtual { color: #FFD700; }      /* Amarelo Ouro */
+        .btn-card .fa-credit-card.biblioteca { color: #8B6914; }        /* Marrom */
+        .btn-card .fa-credit-card.notas { color: #66BB6A; }             /* Verde Claro */
+
         .btn-card .fa-calendar-alt { color: #ffb74d; }
         .btn-card .fa-layer-group { color: #4dd0e1; }
         .btn-card .fa-user-tie { color: #9575cd; }
@@ -710,7 +713,7 @@
                     </span>
                 </a>
                 <a href="#" class="btn-destaque destaque-sei" target="_blank">
-                    <i class="fas fa-folder-open"></i>
+                    <i class="fas fa-credit-card"></i>
                     <span class="destaque-label">
                         Sistema SEI
                         <small>Processos</small>
@@ -742,25 +745,28 @@
                 <span class="btn-desc">Gabinete</span>
             </a>
 
-            <a href="https://docs.google.com/spreadsheets/d/1vl_4QMPtPt79BmXwX1XndQ1cIzlNkzSWzNUPtabORsM/edit?gid=556974593#gid=556974593" class="btn-card" target="_blank" data-search="sala virtual aulas ao vivo">
-                <i class="fas fa-chalkboard-teacher"></i>
-                <span class="btn-label">Sala Virtual</span>
-                <span class="btn-desc">Aulas ao vivo</span>
+            <!-- SALA VIRTUAL - AMARELO OURO -->
+            <a href="https://script.google.com/macros/s/AKfycbyiBCfyJIAUxSUCs_1-vq1J8dA4tu_r9_XFRq8WyNt7IqGB1-rh5-MTl4HWPPWyK5ns/exec" class="btn-card" target="_blank" data-search="sala virtual aulas ao vivo">
+                <i class="fas fa-credit-card sala-virtual"></i>
+                <span class="btn-label">Limite PNAE</span>
+                <span class="btn-desc">Cartão PNAE</span>
             </a>
 
+            <!-- BIBLIOTECA - MARROM -->
             <a href="#" class="btn-card" target="_blank" data-search="biblioteca acervo digital livros">
-                <i class="fas fa-book-open"></i>
-                <span class="btn-label">Biblioteca</span>
-                <span class="btn-desc">Acervo digital</span>
+                <i class="fas fa-credit-card biblioteca"></i>
+                <span class="btn-label">Limite FAED</span>
+                <span class="btn-desc">Cartão FAED</span>
             </a>
 
+            <!-- NOTAS - VERDE CLARO -->
             <a href="#" class="btn-card" target="_blank" data-search="notas boletim escolar aluno">
-                <i class="fas fa-user-graduate"></i>
-                <span class="btn-label">Notas</span>
-                <span class="btn-desc">Boletim escolar</span>
+                <i class="fas fa-credit-card notas"></i>
+                <span class="btn-label">Limite Manutenção</span>
+                <span class="btn-desc">Cartão Manutenção</span>
             </a>
 
-            <a href="#" class="btn-card" target="_blank" data-search="calendário datas eventos">
+            <a href="https://docs.google.com/spreadsheets/d/1jK-DAZBEZaQ-ES_C1PWo5_tz1vfjZG-LzL8hQcSbv-g/edit?gid=1616163033#gid=1616163033" class="btn-card" target="_blank" data-search="calendário datas eventos">
                 <i class="fas fa-calendar-alt"></i>
                 <span class="btn-label">Calendário</span>
                 <span class="btn-desc">Datas e eventos</span>
